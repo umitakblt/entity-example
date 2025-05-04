@@ -35,17 +35,29 @@ public class User implements Serializable {
     @Column(name = "updated", nullable = false)
     private Instant updated;
 
+    @Column(name = "identifyNumber", nullable = false, unique = true)
+    private String identifyNumber;
+
     public User() {
+    }
+
+    public User(String name, String surName, String email, String phoneNumber, String identifyNumber) {
+        this.name = name;
+        this.surName = surName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.identifyNumber = identifyNumber;
     }
 
     public User(Long id, String name, String surName, String email, String phoneNumber, Instant created, Instant updated) {
         this.id = id;
         this.name = name;
-        this.surName = surName;
         this.email = email;
-        this.phoneNumber = phoneNumber;
+        this.surName = surName;
         this.created = created;
+        this.phoneNumber = phoneNumber;
         this.updated = updated;
+        this.identifyNumber = identifyNumber;
     }
 
     public Long getId() {
@@ -104,6 +116,14 @@ public class User implements Serializable {
         this.updated = updated;
     }
 
+    public String getIdentifyNumber() {
+        return identifyNumber;
+    }
+
+    public void setIdentifyNumber(String identifyNumber) {
+        this.identifyNumber = identifyNumber;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -114,6 +134,7 @@ public class User implements Serializable {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", created=" + created +
                 ", updated=" + updated +
+                ", identifyNumber='" + identifyNumber + '\'' +
                 '}';
     }
 }

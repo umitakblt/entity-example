@@ -22,14 +22,20 @@ public class CreateUserRequest implements Serializable {
     @NotEmpty
     private String phoneNumber;
 
+
+    @NotNull(message = "identifyNumber is null")
+    @NotEmpty(message = "identifyNumber is empty")
+    private String identifyNumber;
+
     public CreateUserRequest() {
     }
 
-    public CreateUserRequest(String name, String surName, String email, String phoneNumber) {
+    public CreateUserRequest(String name, String surName, String email, String phoneNumber, String identifyNumber) {
         this.name = name;
         this.surName = surName;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.identifyNumber = identifyNumber;
     }
 
     public String getName() {
@@ -64,6 +70,14 @@ public class CreateUserRequest implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getIdentifyNumber() {
+        return identifyNumber;
+    }
+
+    public void setIdentifyNumber(String identifyNumber) {
+        this.identifyNumber = identifyNumber;
+    }
+
     @Override
     public String toString() {
         return "CreateUserRequest{" +
@@ -71,6 +85,7 @@ public class CreateUserRequest implements Serializable {
                 ", surName='" + surName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", identifyNumber='" + identifyNumber + '\'' +
                 '}';
     }
 }
